@@ -61,6 +61,12 @@ func (vec *Vector3f) Normalized() Vector3f {
 	return res
 }
 
+func (vec *Vector3f) Lerp(dest Vector3f, lerpFactor float32) Vector3f {
+	v := dest.SubV(*vec)
+	v = v.Mul(lerpFactor)
+	return v.AddV(*vec)
+}
+
 func (vec *Vector3f) AddV(r Vector3f) Vector3f {
 	res := Vector3f{}
 	res.x = vec.x + r.GetX()
